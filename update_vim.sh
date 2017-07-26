@@ -1,7 +1,27 @@
 #!/bin/bash
+act_path=$(pwd)
+username=$(whoami)
+opt_name="opt"
+opt_path="/home/$username/$opt_name/"
+git_vim="https://github.com/vim/vim.git"
+sw_name="vim"
+sw_path="$opt_path$sw_name"
 
-cd vim/
-#hg pull -u
+
+if ! [ -d "$opt_path" ]
+then
+    echo "Folder " + "$opt_path" + " does not exist."
+    echo "So i create 1 for you!"
+    mkdir -p "$opt_path"
+fi
+if ! [ -d "$sw_path" ]
+then
+    echo "Folder " + "$sw_path" + " does not exist."
+    echo "So i create 1 for you!"
+    git clone "$git_vim"
+fi
+
+cd "$sw_path"
 git pull
 make distclean
 ./configure \
