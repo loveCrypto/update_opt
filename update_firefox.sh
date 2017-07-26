@@ -37,7 +37,8 @@ then
 	then
 		echo "Backup original Firefox Binary to: " + $deb_path + "_orig"
         mv "$deb_path" "$deb_path"_orig
-        ln -s "$sw_path"/"$sw_name"/"$sw_name" "$deb_path"
+        echo "make a link, so you can use the new version "
+        sudo ln -s "$sw_path"/"$sw_name"/"$sw_name" "$deb_path"
     fi
 fi    
 
